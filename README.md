@@ -62,7 +62,7 @@ and then later:
 
 ```
 grunt.registerTask('test', [
-  'handlebarsSanity:test',
+  'emberjs_handlebars_sanity:test',
   'clean:server',
   // ...
 ]);
