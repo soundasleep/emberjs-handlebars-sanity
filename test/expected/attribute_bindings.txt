@@ -1,0 +1,1 @@
+Found template with duplicate attribute and attribute binding 'class'

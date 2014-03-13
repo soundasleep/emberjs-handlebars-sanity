@@ -1,0 +1,21 @@
+<div class="sidebar-section leg" {{bind-attr id="id"}} {{action 'highlightLeg'}}>
+  <div class="col-xs-2">
+    <div class="small-icon" {{bind-attr class="modeIconClass"}}></div>
+  </div>
+  <div class="col-xs-10">
+    <p>
+      {{#if mode}}
+        {{formatTime departTime}}
+        <br />
+        <strong><a target="_blank" {{bind-attr href="timeTableUrl"}}>Bus {{routeCode}}</a></strong>
+        towards {{destinationText}}
+        <br />
+        {{durationMinutes}} min {{stops}} - Stop no
+      {{else}}
+        <strong>Walk</strong> to {{destinationText}}
+        <br />
+        About {{durationMinutes}} min, {{walkDistanceMetres}} m
+      {{/if}}
+    </p>
+  </div>
+</div>

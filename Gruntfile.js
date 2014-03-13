@@ -30,22 +30,12 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     emberjs_handlebars_sanity: {
-      default_options: {
+      attribute_bindings: {
+        src: ['test/fixtures/attribute_bindings.hbs'],
         options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
+          errors: 'tmp/attribute_bindings.txt'
+        }
+      }
     },
 
     // Unit tests.

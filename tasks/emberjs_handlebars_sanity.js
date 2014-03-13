@@ -16,34 +16,49 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('emberjs_handlebars_sanity', 'Sanity tests for Handlebars templates within an EmberJS project.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
     });
 
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
+    this.files.forEach(function(file) {
+
+      var found = 0;
+      var errors = 0;
+
+      var errorFile = options.errors;
+      var errorLog = "";
+
+      file.src.forEach(function(f) {
+          found++;
+          grunt.log.writeln("Testing " + f);
+          var content = grunt.file.read(f);
+          var match;
+
+          // now we can do all of our tests
+
+          // find <div class="small-icon" {{bind-attr class="modeIconClass"}}></div>
+          match = match = content.match(/<.+([a-z]+)="([^"]+)".+{{bind-attr \1=.+}}/im);
+          if (match) {
+              grunt.log.error("Found template with duplicate attribute and attribute binding '" + match[1] + "' in " + f);
+              grunt.log.error("This will mean one of the attributes will be silently ignored");
+              grunt.log.error("Try using e.g. {{bind-attr " + match[1] + "=\":static dynamic}}");
+              grunt.log.error("   " + match[0]);
+              errorLog += "Found template with duplicate attribute and attribute binding '" + match[1] + "'";
+              errors++;
+          }
+      });
+
+      if (errors > 0) {
+        if (errorFile) {
+          grunt.file.write(errorFile, errorLog);
+          grunt.log.writeln("Writing error file " + errorFile);
         }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+        return false;
+      }
+      if (found <= 0) {
+        grunt.log.error("Could not find any Handlebars templates to test.");
+        return false;
+      }
 
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
     });
   });
 
