@@ -21,7 +21,7 @@ grunt.loadNpmTasks('grunt-emberjs-handlebars-sanity');
 
 Right now it's just a framework for adding more tests. Currently it checks all templates (as specified in `src`) for instances of the following:
 
-# `<div class="small-icon" {{bind-attr class="modeIconClass"}}></div>` - Two identical attribute bindings. One of these bindings will be ignored. The correct approach is `<div {{bind-attr class=":small-icon modeIconClass"}}></div>`.
+* `<div class="small-icon" {{bind-attr class="modeIconClass"}}></div>` - Two identical attribute bindings. One of these bindings will be ignored. The correct approach is `<div {{bind-attr class=":small-icon modeIconClass"}}></div>`.
 
 Because a running EmberJS application uses compiled templates rather than source, these tests have to occur on the source files themselves.
 
