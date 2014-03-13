@@ -30,6 +30,12 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     emberjs_handlebars_sanity: {
+      // default options: we don't want to crash right now, we want to test later
+      options: {
+        ignoreFailure: true
+      },
+
+      // now we can list all the tests
       attribute_bindings: {
         src: ['test/fixtures/attribute_bindings.hbs'],
         options: {
