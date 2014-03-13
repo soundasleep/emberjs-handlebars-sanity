@@ -1,0 +1,42 @@
+{
+  "name": "grunt-emberjs-handlebars-sanity",
+  "description": "Sanity tests for Handlebars templates within an EmberJS project.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/soundasleep/emberjs-handlebars-sanity",
+  "author": {
+    "name": "Jevon Wright",
+    "email": "jevon@jevon.org",
+    "url": "http://www.jevon.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soundasleep/emberjs-handlebars-sanity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soundasleep/emberjs-handlebars-sanity/issues"
+  },
+  "licenses": [
+    {
+      "type": "GPL-2.0",
+      "url": "https://github.com/soundasleep/emberjs-handlebars-sanity/blob/master/LICENSE-GPL-2.0"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.4"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.4"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
