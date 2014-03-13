@@ -37,7 +37,7 @@ grunt.initConfig({
 ```js
 grunt.initConfig({
   emberjs_handlebars_sanity: {
-    test: {}
+    test: {
       src: [
         '<%= yeoman.app %>/templates/{,*/}*.hbs'
       ]
@@ -49,11 +49,12 @@ grunt.initConfig({
 and then later:
 
 ```
-    grunt.registerTask('test', [
-        'handlebarsSanity:test',
-        'clean:server',
-        // ...
-    ]);
+grunt.registerTask('test', [
+  'handlebarsSanity:test',
+  'clean:server',
+  // ...
+]);
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
