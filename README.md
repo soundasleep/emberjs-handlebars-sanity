@@ -32,6 +32,10 @@ grunt.initConfig({
 });
 ```
 
+### Options
+
+* `ignoreFailure`: if `true`, then sanity checks will not cause the task to fail (`false` by default)
+
 ### Usage Examples
 
 ```js
