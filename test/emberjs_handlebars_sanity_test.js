@@ -27,11 +27,27 @@ exports.emberjs_handlebars_sanity = {
     // setup here if necessary
     done();
   },
+
   attributeBindings: function(test) {
     var actual = grunt.file.read('tmp/attribute_bindings.txt');
     var expected = grunt.file.read('test/expected/attribute_bindings.txt');
-    test.equal(actual, expected, 'Can find duplicate attribute bindings.');
+    test.equal(actual.trim(), expected.trim(), 'Can find duplicate attribute bindings.');
 
     test.done();
   },
+
+  htmlCommentBinding: function(test) {
+    var actual = grunt.file.read('tmp/html_comment_binding.txt');
+    var expected = grunt.file.read('test/expected/html_comment_binding.txt');
+    test.equal(actual.trim(), expected.trim(), 'Can find bindings within HTML comments.');
+
+    test.done();
+  },
+
+  normalCommentBinding: function(test) {
+    test.equal(false, grunt.file.exists('tmp/normal_comment_binding.txt'));
+
+    test.done();
+  },
+
 };

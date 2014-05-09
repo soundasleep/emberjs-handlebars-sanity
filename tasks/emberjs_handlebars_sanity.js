@@ -38,13 +38,24 @@ module.exports = function(grunt) {
         // now we can do all of our tests
 
         // find <div class="small-icon" {{bind-attr class="modeIconClass"}}></div>
-        match = match = content.match(/<.+([a-z]+)="([^"]+)".+{{bind-attr \1=.+}}/im);
+        match = content.match(/<.+([a-z]+)="([^"]+)".+{{bind-attr \1=.+}}/im);
         if (match) {
-            grunt.log.error("Found template with duplicate attribute and attribute binding '" + match[1] + "' in " + f);
-            grunt.log.error("This will mean one of the attributes will be silently ignored");
-            grunt.log.error("Try using e.g. {{bind-attr " + match[1] + "=\":static dynamic}}");
+            grunt.log.error("Found template with duplicate attribute and attribute binding '" + match[1] + "' in " + f + ".");
+            grunt.log.error("This will mean one of the attributes will be silently ignored.");
+            grunt.log.error("Try using e.g. {{bind-attr " + match[1] + "=\":static dynamic}}.");
             grunt.log.error("   " + match[0]);
-            errorLog += "Found template with duplicate attribute and attribute binding '" + match[1] + "'";
+            errorLog += "Found template with duplicate attribute and attribute binding '" + match[1] + "'\n";
+            errors++;
+        }
+
+        // find <!-- {{binding}} -->
+        match = content.match(/<!--(.|\r|\n)*\{\{([^}]+)\}\}(.|\r|\n)*-->/im);
+        if (match) {
+            grunt.log.error("Found binding within an HTML comment '" + match[2] + "' in " + f);
+            grunt.log.error("This will mean the binding will be created but not exist in the DOM, causing errors.");
+            grunt.log.error("Try using Handlebars comments instead, e.g. {{!-- " + match[2] + " --}}.");
+            grunt.log.error("   " + match[0]);
+            errorLog += "Found binding '" + match[2] + "' within HTML comment\n";
             errors++;
         }
       });

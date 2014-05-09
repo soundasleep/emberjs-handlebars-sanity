@@ -41,6 +41,20 @@ module.exports = function(grunt) {
         options: {
           errors: 'tmp/attribute_bindings.txt'
         }
+      },
+
+      html_comment_binding: {
+        src: ['test/fixtures/html_comment_binding.hbs'],
+        options: {
+          errors: 'tmp/html_comment_binding.txt'
+        }
+      },
+
+      normal_comment_binding: {
+        src: ['test/fixtures/normal_comment_binding.hbs'],
+        options: {
+          errors: 'tmp/normal_comment_binding.txt'
+        }
       }
     },
 

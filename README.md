@@ -22,6 +22,7 @@ grunt.loadNpmTasks('grunt-emberjs-handlebars-sanity');
 Right now it's just a framework for adding more tests. Currently it checks all templates (as specified in `src`) for instances of the following:
 
 * `<div class="small-icon" {{bind-attr class="modeIconClass"}}></div>` - Two identical attribute bindings. One of these bindings will be ignored. The correct approach is `<div {{bind-attr class=":small-icon modeIconClass"}}></div>`.
+* `<!-- {{binding}} -->` - Binding within an HTML comment. The binding will be created but will not exist in the DOM, causing errors. The correct approach is `{{!-- {{binding}} --}}`.
 
 Because a running EmberJS application uses compiled templates rather than source, these tests have to occur on the source files themselves.
 
@@ -69,7 +70,7 @@ grunt.registerTask('test', [
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/) - modify `Gruntfile.js`, `test/*.js`, `test/fixtures/*`and `test/expected/*` as necessary.
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/) by `grunt test` - modify `Gruntfile.js`, `test/*.js`, `test/fixtures/*`and `test/expected/*` as necessary.
 
 ## Release History
 _(Nothing yet)_

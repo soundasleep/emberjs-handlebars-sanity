@@ -1,0 +1,1 @@
+Found binding 'bound' within HTML comment
