@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         // now we can do all of our tests
 
         // find <div class="small-icon" {{bind-attr class="modeIconClass"}}></div>
-        match = content.match(/<.+([a-z]+)="([^"]+)".+{{bind-attr \1=.+}}/im);
+        match = content.match(/<.+([a-z]+)="([^"]+)"[^>]+{{bind-attr \1=.+}}/im);
         if (match) {
             grunt.log.error("Found template with duplicate attribute and attribute binding '" + match[1] + "' in " + f + ".");
             grunt.log.error("This will mean one of the attributes will be silently ignored.");

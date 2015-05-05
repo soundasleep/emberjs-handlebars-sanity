@@ -55,6 +55,13 @@ module.exports = function(grunt) {
         options: {
           errors: 'tmp/normal_comment_binding.txt'
         }
+      },
+
+      normal_class_binding: {
+        src: ['test/fixtures/normal_class_binding.hbs'],
+        options: {
+          errors: 'tmp/normal_class_binding.txt'
+        }
       }
     },
 
