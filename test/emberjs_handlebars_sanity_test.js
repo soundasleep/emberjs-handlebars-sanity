@@ -50,4 +50,10 @@ exports.emberjs_handlebars_sanity = {
     test.done();
   },
 
+  normalClassBinding: function(test) {
+    test.equal(false, grunt.file.exists('tmp/normal_class_binding.txt'));
+
+    test.done();
+  }
+
 };
